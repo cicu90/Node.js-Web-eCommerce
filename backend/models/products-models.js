@@ -3,12 +3,10 @@ const mongoose = require("mongoose");
 const productModelSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
-    trim: true,
+    required: true
   },
   description: {
-    type: String,
-    trim: true,
+    type: String
   },
   price: {
     type: Number,
@@ -18,13 +16,8 @@ const productModelSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  starValue: {
-    type: Number,
-    required: true,
-  },
   images: {
-    main: String,
-    others: Array,
+    url: Array
   },
 });
 
