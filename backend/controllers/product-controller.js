@@ -19,6 +19,7 @@ const createNewProduct = async (req, res) => {
 }
 
 const findAllProducts = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   try{
     const allProducts = await Product.find({}).lean().exec();
     res.status(200).send({

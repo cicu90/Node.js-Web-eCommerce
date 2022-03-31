@@ -3,16 +3,18 @@ import React from "react";
 import Button from "../Button/Button";
 
 function ItemCard({
-    children,
-    imgSrc,
+    imgSrc="",
+    name= "",
+    price=0,
 }){
     return(
-        <div className="col">
+        <article className="col">
                         <img
-                        src={imgSrc} alt={children}/>
-                        <p>{children}</p>
+                        src={imgSrc} alt={name}/>
+                        <p>{name}</p>
+                        <p>{price} €</p>
                         <Button>Add Cart</Button>
-        </div>
+        </article>
     )
 }
 
