@@ -1,8 +1,8 @@
 .btnBasic{
-    background-color: grey;
+    background-color: transparent;
     border: none;
-    text-transform: uppercase;
-    color: white;
+    color: orange;
+}
+button:hover{
     font-weight: bold;
-    border-radius: 10px;
 }

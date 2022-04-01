@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import "./ProductList.scss";
+
 import ItemCard from "../ItemCard/ItemCard";
 
 
@@ -25,6 +27,7 @@ function ProductList(
                     <ItemCard
                         imgSrc = {"https://www.luisan.net/blog/wp-content/uploads/2014/09/color_small_mk-e1549454603143.png"}
                         name= {item.title}
+                        description={item.description}
                         price= {item.price}
                         >
                     </ItemCard>

@@ -7,10 +7,10 @@ function Home(){
     return (
         <div className="bodyHome">
             <p>
-                Home div
+                Nav bar
             </p>
             <div className="row squareHome">
-                <div className="col-8 items">
+                <div className="col-9 items">
                     <ProductList/>
                 </div>
                 <div className="col cart">
