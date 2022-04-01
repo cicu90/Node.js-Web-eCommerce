@@ -3,14 +3,14 @@ import React from "react";
 import "./Button.scss";
 
 function Button ({
-    children,
+    name,
     ...props
 }){
     return(
         <div>
             <button className="btnBasic"
             {...props}>
-                {children}
+                {name}
             </button>
         </div>
     )
