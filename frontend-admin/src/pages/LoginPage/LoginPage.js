@@ -13,14 +13,14 @@ const LoginPage = () => {
           <h3 className="panel-text center">Web eCommerce</h3>
         </div>
           <div className="panel-input">
-            <form method="post">
+            <form>
               <label>Admin :</label>
-              <input type="text" className="form-control" placeholder="Your name here..." required>
+              <input type="text" className="form-control" required>
               </input>
               <label>Password :</label>
-              <input type="password" className="form-control" name="password" placeholder="Your name here..." required>
+              <input type="password" className="form-control" name="password" required>
               </input>
-              <button className="bbtn btn-info pull-right" type="submit" name="btnLogin">Login</button>
+              <button className="btn btn-info pull-right" type="submit" name="btnLogin">Login</button>
             </form>
               <p className="pull-right">Forgot Password?</p>
             {/* <a href="#">
