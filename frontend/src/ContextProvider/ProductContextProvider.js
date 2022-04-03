@@ -1,20 +1,29 @@
 import React, { useReducer} from "react";
+import axios from "axios";
 
-import ProductsContext from "../Context/ProductContext";
-import loadLocalStorageItems from "../utils/loadLocalStorageItems";
+import ProductContext from "../Context/ProductContext";
 
-// const from App
-const PRODUCTS_LOCAL_STORAGE_KEY = "react-sc-state-products";
 
+const INITIAL_STATE = "initialState";
 const SAVE_NEW_PRODUCT = "saveNewProduct";
 
-function productsReducer(state,action){
+async function productsReducer(state,action){
     switch (action.type) {
         case SAVE_NEW_PRODUCT :
             {
                 const products = state;
                 products.push(action.newProduct)
                 return products;
+            }
+            case INITIAL_STATE:
+            {
+                const productValue = await axios
+            .get('http://localhost:4000/products/findAll')
+            .then(res=>{
+                console.log(res)
+                return res.data.response
+            })
+            return productValue ;
             }
 
         default:
@@ -25,25 +34,29 @@ function productsReducer(state,action){
 }
 
 
-function ProductsContextProvider({children}){
-    // initial state like App const
-    const productInitialState= loadLocalStorageItems(PRODUCTS_LOCAL_STORAGE_KEY, []);
+function ProductContextProvider({children}){
 
-    const [productsState, setProductsState] = useReducer(productsReducer,productInitialState);
+    const [productsState, setProductsState] = useReducer(productsReducer,[]);
 
     function saveNewProduct(newProduct){
         setProductsState({type: SAVE_NEW_PRODUCT,
         newProduct: newProduct })
     }
 
+    function initialState(){
+        setProductsState({type: INITIAL_STATE,
+            })
+    }
+
     return (
-        <ProductsContext.Provider value={{
+        <ProductContext.Provider value={{
             products: productsState,
-            saveNewProduct: saveNewProduct
+            saveNewProduct: saveNewProduct,
+            initialState:initialState
         }}>
             {children}
-        </ProductsContext.Provider>
+        </ProductContext.Provider>
     )
 }
 
-export default ProductsContextProvider;
+export default ProductContextProvider;

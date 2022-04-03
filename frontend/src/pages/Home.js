@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./home.scss";
 
 import ProductList from "../components/ProductList/ProductList";
 import Cart from "../components/Cart/Cart";
+import CartContext from "../Context/CartContext";
 
 function Home({
     handleAddToCart,
 }){
+    const {initialState} = useContext(CartContext)
+    useEffect(()=>{
+        initialState()
+    },[])
     return (
         <div className="bodyHome">
             <p>
