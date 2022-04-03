@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.scss';
+import ProductsContext from '../../context/ProductsContext'
+import ProductList from '../../components/DashboardProducts/Products';
+const Dashboard = () => {
 
-const Dashboard = () => (
-  <div className={styles.Dashboard}>
-    Dashboard Component
-  </div>
-);
+  const { initialValue } = useContext(ProductsContext);
+  useEffect(()=>{
+    initialValue()
+},[])
+  
+  return (<div className={styles.Dashboard}>
+    <ProductList/>
+  </div>)
+};
 
 Dashboard.propTypes = {};
 

@@ -3,22 +3,18 @@ import ProductsContext from "../../context/ProductsContext";
 
 import ItemCard from "../ItemCard";
 
-function ProductList({
-  ...props
-}) {
+function ProductList() {
   const { products } = useContext(ProductsContext);
   return (
-    <section className="row" {...props}>
+    <section className="row">
       {products.map((product) => (
         <ItemCard
           key={product.id}
           id={product.id}
-          img={product.img}
+          img={product.images}
           title={product.title}
-          shortDescription={product.shortDescription}
-          upVotes={product.votes.upVotes}
-          downVotes={product.votes.downVotes}
-          isFavorite={product.isFavorite}
+          shortDescription={product.description}
+          
         />
       ))}
     </section>

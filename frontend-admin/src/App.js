@@ -1,10 +1,11 @@
 //Van todas las rutas
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import LoginPage from './pages/LoginPage/LoginPage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+// import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Dashboard from './pages/Dashboard/Dashboard';
+import ProductsContextProvider from './contextProvider/ProductsContextProvider'
 
 
 function App() {
@@ -18,12 +19,14 @@ function App() {
     <div className="App">
       <h1>Application</h1>
       <BrowserRouter>
+      <ProductsContextProvider>
       <Routes>
-        <Route exact path="/" element={<PrivateRoute />}>
+        {/* <Route exact path="/" element={<PrivateRoute />}> */}
           <Route path="/" element={<Dashboard />}/>
-        </Route>
+        {/* </Route> */}
       <Route path="/login" element={<LoginPage/>}/>
         </Routes>
+        </ProductsContextProvider>
       </BrowserRouter>
     </div>
   );
