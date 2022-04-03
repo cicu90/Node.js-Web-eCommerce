@@ -9,6 +9,7 @@ const helmet = require("helmet");
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/usersRoutes');
 var productsRouter = require('./routes/productsRoutes');
+const CartRouter = require('./routes/cartRoutes');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/cart', CartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
