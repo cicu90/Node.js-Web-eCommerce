@@ -7,7 +7,9 @@ import ItemCard from "../ItemCard/ItemCard";
 
 
 
-function ProductList(
+function ProductList({
+    handleAddToCart,
+}
 ){
     const [productsArray, setProductsArray]= useState([])
 
@@ -25,10 +27,12 @@ function ProductList(
         <section className="row">
                 {productsArray.map((item) =>((
                     <ItemCard
+                        id={item.id}
                         imgSrc = {"https://www.luisan.net/blog/wp-content/uploads/2014/09/color_small_mk-e1549454603143.png"}
                         name= {item.title}
                         description={item.description}
                         price= {item.price}
+                        handleAddToCart={handleAddToCart}
                         >
                     </ItemCard>
                 )))}

@@ -7,12 +7,10 @@ function Button ({
     ...props
 }){
     return(
-        <div>
             <button className="btnBasic"
             {...props}>
                 {name}
             </button>
-        </div>
     )
 }
 

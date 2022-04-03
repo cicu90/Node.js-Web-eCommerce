@@ -2,8 +2,11 @@ import React from "react";
 import "./home.scss";
 
 import ProductList from "../components/ProductList/ProductList";
+import Cart from "../components/Cart/Cart";
 
-function Home(){
+function Home({
+    handleAddToCart,
+}){
     return (
         <div className="bodyHome">
             <p>
@@ -11,10 +14,12 @@ function Home(){
             </p>
             <div className="row squareHome">
                 <div className="col-9 items">
-                    <ProductList/>
+                    <ProductList
+                    handleAddToCart={handleAddToCart}
+                    />
                 </div>
                 <div className="col cart">
-                        <p>Cart</p>
+                        <Cart/>
                 </div>
             </div>
         </div>
