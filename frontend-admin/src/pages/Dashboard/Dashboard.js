@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Dashboard.module.scss';
 import ProductsContext from '../../context/ProductsContext'
-import ProductList from '../../components/DashboardProducts/Products';
+import ProductList from '../../components/DashboardProducts/DashboardProducts';
 const Dashboard = () => {
 
   const { initialValue } = useContext(ProductsContext);
@@ -14,9 +14,5 @@ const Dashboard = () => {
     <ProductList/>
   </div>)
 };
-
-Dashboard.propTypes = {};
-
-Dashboard.defaultProps = {};
 
 export default Dashboard;
