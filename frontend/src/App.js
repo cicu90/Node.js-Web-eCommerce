@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 
 
@@ -8,11 +8,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Home from './pages/Home';
 
 import useLocalStorage from "./hooks/useLocalStorage";
-import ProductsContextProvider from './ContextProvider/ProductContextProvider';
+import ProductContextProvider from './ContextProvider/ProductContextProvider';
 import loadLocalStorageItems from "./utils/loadLocalStorageItems";
+import CartContextProvider from "./ContextProvider/CartContextProvider";
 
 function buildNewCartItem(cartItem) {
-  
+
 
   return {
     id: "",
@@ -63,14 +64,15 @@ function App() {
 
 
   return (
-    <ProductsContextProvider>
-
-    <div className="App">
-        <Home
-        handleAddToCart={handleAddToCart}
-        />
-    </div>
-    </ProductsContextProvider>
+    <ProductContextProvider>
+      <CartContextProvider>
+        <div className="App">
+            <Home
+            handleAddToCart={handleAddToCart}
+            />
+        </div>
+        </CartContextProvider>
+    </ProductContextProvider>
   );
 }
 

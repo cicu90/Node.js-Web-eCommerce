@@ -2,6 +2,7 @@ const Product = require(`../models/products-models`);
 
 const createNewProduct = async (req, res) => {
   try{
+    res.header("Access-Control-Allow-Origin", "*");
     let newProduct = new Product(req.body);
 
     await newProduct.save((error, data) => {
@@ -19,8 +20,8 @@ const createNewProduct = async (req, res) => {
 }
 
 const findAllProducts = async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
   try{
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const allProducts = await Product.find({}).lean().exec();
     res.status(200).send({
       response: allProducts
@@ -32,6 +33,7 @@ const findAllProducts = async (req, res) => {
 
 const findById = async (req, res) => {
   try{
+    res.header("Access-Control-Allow-Origin", "*");
     const product = await Product.findById(req.params.productId).lean().exec();
     res.status(200).send({
       response: product
@@ -40,7 +42,8 @@ const findById = async (req, res) => {
 }
 
 const deleteProductById = async (req, res) => {
-  try{ console.log(req.params);
+  try{
+    res.header("Access-Control-Allow-Origin", "*");
     await Product.deleteOne({"_id":req.params.productId})
     res.status(200).send({
       response: "The product has been deleted successfully"
@@ -50,6 +53,7 @@ const deleteProductById = async (req, res) => {
 
 const updateProductById = async (req, res) => {
   try{
+    res.header("Access-Control-Allow-Origin", "*");
     await Product.findOneAndUpdate({"_id":req.params.productId}, req.body).lean().exec();
     res.status(200).send({
       response: "The product has been updated successfully"
